@@ -21,6 +21,12 @@
   (setq use-package-always-ensure t
 	    use-package-expand-minimally t))
 
+;; Set customization file
+;; ----------------------
+(defvar matt/custom-file (expand-file-name "custom.el" user-emacs-directory))
+(setq custom-file matt/custom-file) 
+(if (file-exists-p matt/custom-file)
+    (load custom-file))
 
 ;; Performance Tweaks
 ;; --------------------
@@ -30,37 +36,6 @@
 
 ;; Increase filesize warning threshold to 50MB
 (setq large-file-warning-threshold (* 50 1024 1024))
-
-
-;; Interface Settings
-;; ------------------
-
-;; Set default font
-(set-face-attribute 'default nil
-		            :family "Fira Code"
-		            :height 120
-		            :weight 'normal
-		            :width 'normal)
-
-;; Disable extra GUI elements
-(tool-bar-mode -1)
-(menu-bar-mode -1)
-(scroll-bar-mode -1)
-
-;; Disable startup screen
-(setq inhibit-startup-screen t)
-
-;; Better scrolling
-(setq scroll-margin 0
-      scroll-conservatively 101 ; > 100
-      scroll-preserve-screen-position t
-      auto-window-vscroll nil)
-
-;; Enable line and column numbers
-(line-number-mode +1)
-(column-number-mode +1)
-(global-display-line-numbers-mode +1)
-
 
 ;; Text Editing Settings
 ;; ---------------------
